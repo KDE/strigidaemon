@@ -1,3 +1,5 @@
+include(CheckFunctionExists)
+
 # Not all systems have mkdtemp, and some of the tests use mkdtemp
 # -- pulling in an implementation from kdefakes is an annoying workaround,
 # so instead just don't do the tests here.
