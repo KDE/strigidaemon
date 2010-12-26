@@ -67,7 +67,7 @@ add_library(dbusserver STATIC testinterface.cpp dbusserver.cpp
 )
 
 #SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${DBUS_CFLAGS}")
-target_link_libraries(dbusserver dbuscpp)
+target_link_libraries(dbusserver dbuscpp streams)
 
 add_executable(testserver testserver.cpp ../strigithread.cpp)
 target_link_libraries(testserver dbusserver ${CMAKE_THREAD_LIBS_INIT} ${DBUS_LIBRARIES} ${LOG4CXX_LIBRARIES} streamanalyzer)
