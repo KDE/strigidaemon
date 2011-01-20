@@ -92,6 +92,7 @@ if(LOG4CXX_FOUND)
 endif(LOG4CXX_FOUND)
 link_directories(${LIBSTREAMS_LIBRARY_DIRS})
 link_directories(${LIBSTREAMANALYZER_LIBRARY_DIRS})
+link_directories(${DBUS_LIBRARY_DIRS})
 
 add_subdirectory(lib)
 add_subdirectory(bin)
