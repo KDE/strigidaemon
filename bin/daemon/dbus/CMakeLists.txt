@@ -3,7 +3,7 @@ subdirs(dbuscpp)
 # if available, use Perl for generating the dbus interfaces.
 # otherwise, just copy them into the build directory
 find_package(Perl)
-find_package(LibDBus REQUIRED)
+find_package(DBus REQUIRED)
 
 link_directories( ${DBUS_LIBRARY_DIRS} )
 
