@@ -39,21 +39,22 @@ endif(NOT MSVC AND NOT CMAKE_SYSTEM MATCHES "SunOS-5*.")
 
 ##### environment inspection #####
 
-# check for required packages
-if(STRIGI_VERSION_STRING)
-	# if STRIGI_VERSION_STRING is defined, we are compiling the meta-package
-	set(LIBSTREAMS_INCLUDE_DIRS
-		../libstreams/include
-		${CMAKE_CURRENT_BINARY_DIR}/../libstreams/include)
-	set(LIBSTREAMANALYZER_INCLUDE_DIRS
-		../libstreamanalyzer/include
-		${CMAKE_CURRENT_BINARY_DIR}/../libstreamanalyzer/include)
-	set(LIBSTREAMS_LIBRARIES streams)
-	set(LIBSTREAMANALYZER_LIBRARIES streamanalyzer)
-else(STRIGI_VERSION_STRING)
-	find_package(LibStreams REQUIRED)
-	find_package(LibStreamAnalyzer REQUIRED)
-endif(STRIGI_VERSION_STRING)
+if(${CMAKE_SOURCE_DIR} STREQUAL ${CMAKE_CURRENT_SOURCE_DIR})
+  find_package(LibStreams REQUIRED)
+  find_package(LibStreamAnalyzer REQUIRED)
+else()
+  set(LIBSTREAMS_INCLUDE_DIRS
+    ${libstreams_SOURCE_DIR}/include
+    ${libstreams_BINARY_DIR}/include
+    )
+  set(LIBSTREAMANALYZER_INCLUDE_DIRS
+    ${libstreamanalyzer_SOURCE_DIR}/include
+    ${libstreamanalyzer_BINARY_DIR}/include
+    )
+  set(LIBSTREAMS_LIBRARIES streams)
+  set(LIBSTREAMANALYZER_LIBRARIES streamanalyzer)
+endif()
+
 find_package(Threads REQUIRED)
 find_package(LibXml2 REQUIRED)
 find_optional_dep(DBus ENABLE_DBUS DBUS_FOUND "dbus inter-process communication")
