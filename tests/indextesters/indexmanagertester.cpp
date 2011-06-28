@@ -28,8 +28,6 @@ using namespace std;
 using namespace Strigi;
 using namespace strigiunittest;
 
-CPPUNIT_TEST_SUITE_REGISTRATION( CLuceneIndexManagerTest );
-
 IndexManagerTest::IndexManagerTest(const std::string& backendname)
     :m_backendname(backendname), m_indexpath(":memory:"), m_manager(0) {
 }

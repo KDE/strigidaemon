@@ -56,13 +56,5 @@ public:
     void testIndexManagerOnInvalidDirectory();
 };
 
-class CLuceneIndexManagerTest : public IndexManagerTest {
-private:
-    CPPUNIT_TEST_SUB_SUITE( CLuceneIndexManagerTest, IndexManagerTest);
-    CPPUNIT_TEST_SUITE_END();
-public:
-    CLuceneIndexManagerTest() :IndexManagerTest("clucene") {}
-};
-
 }
 #endif

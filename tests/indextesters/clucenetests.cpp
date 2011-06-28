@@ -21,6 +21,7 @@
 #include "indexreadertester.h"
 #include "indexwritertester.h"
 #include "indexsearchtester.h"
+#include "indexmanagertester.h"
 using namespace strigiunittest;
 
 class CLuceneIndexReaderTest : public IndexReaderTest {
@@ -49,4 +50,13 @@ public:
     CLuceneIndexSearchTest() :IndexSearchTest("clucene") {}
 };
 CPPUNIT_TEST_SUITE_REGISTRATION( CLuceneIndexSearchTest );
+
+class CLuceneIndexManagerTest : public IndexManagerTest {
+private:
+    CPPUNIT_TEST_SUB_SUITE( CLuceneIndexManagerTest, IndexManagerTest);
+    CPPUNIT_TEST_SUITE_END();
+public:
+    CLuceneIndexManagerTest() :IndexManagerTest("clucene") {}
+};
+CPPUNIT_TEST_SUITE_REGISTRATION( CLuceneIndexManagerTest );
 
