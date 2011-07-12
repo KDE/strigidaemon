@@ -237,7 +237,7 @@ DaemonConfigurator::getPollingInterval(const string& repositoryName) {
         Repository repo;
         repo.a_name = repositoryName;
         e_repository.push_back(repo);
-        r = &repo;
+        r = &*e_repository.rbegin();
     }
 
     // check minimum polling interval
