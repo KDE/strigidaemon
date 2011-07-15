@@ -109,9 +109,6 @@ threadstarter(void *d) {
 
 #ifndef __APPLE__
     if (thread->getPriority() > 0) {
-#ifndef SCHED_BATCH
-#define SCHED_BATCH 3
-#endif
         // renice the thread
         int r  = setpriority(PRIO_PROCESS, 0, thread->getPriority());
         if (r != 0) {
@@ -119,12 +116,16 @@ threadstarter(void *d) {
                 + ".threadstarter",
                 string("error setting priority: ") + strerror(errno));
         }
+
+#ifdef SCHED_BATCH
         r = sched_setscheduler(0, SCHED_BATCH, &param);
         if (r != 0) {
             STRIGI_LOG_INFO (string("strigi.daemon.") + thread->name
                 + ".threadstarter",
                 string("error setting to batch: ") + strerror(errno));
         }
+#endif
+
 #ifdef SYS_ioprio_set
         if (syscall(SYS_ioprio_set, IOPRIO_WHO_PROCESS, 0,
                 IOPRIO_CLASS_IDLE<<IOPRIO_CLASS_SHIFT ) < 0 ) {
