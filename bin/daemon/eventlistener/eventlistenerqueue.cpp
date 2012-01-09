@@ -27,9 +27,7 @@
 #include <iostream>
 #include <stdio.h>
 
-#if defined(__SUNPRO_CC)
 #include <unistd.h>
-#endif
 
 using namespace std;
 
