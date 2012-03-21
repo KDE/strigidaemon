@@ -54,7 +54,7 @@ SocketServer::run(void*) {
     sd = socket(AF_UNIX, SOCK_STREAM, 0);
     if(sd < 0) {
         perror("cannot open socket ");
-        return false;
+        return 0;
     }
 
     /* set the address */
@@ -67,12 +67,12 @@ SocketServer::run(void*) {
     sock.sun_family = AF_UNIX;
     if (bind(sd, (struct sockaddr *)&sock, sizeof(sock))<0) {
         perror("cannot bind port ");
-        return false;
+        return 0;
     }
 
     if (::listen(sd, 5) < 0) {
         perror("cannot listen to port");
-        return false;
+        return 0;
     }
 
     while (interface->isActive()) {

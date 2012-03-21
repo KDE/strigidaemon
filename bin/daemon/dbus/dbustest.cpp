@@ -67,7 +67,7 @@ serverthread(void*) {
     }
     if (DBUS_REQUEST_NAME_REPLY_PRIMARY_OWNER != ret) {
         fprintf(stderr, "Not Primary Owner (%d)\n", ret);
-        return false;
+        return 0;
     }
 
     for (int i=0; i<10; ++i) {
