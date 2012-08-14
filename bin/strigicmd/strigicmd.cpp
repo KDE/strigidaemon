@@ -244,8 +244,8 @@ create(int argc, char** argv) {
     }
 
     vector<pair<bool,string> > filters;
-    filters.push_back(make_pair<bool,string>(true, included_filter));
-    filters.push_back(make_pair<bool,string>(false, excluded_filter));
+    filters.push_back(make_pair(true, included_filter));
+    filters.push_back(make_pair(false, excluded_filter));
     
     AnalyzerConfiguration config;
     config.setFilters(filters);
@@ -295,8 +295,8 @@ update(int argc, char** argv) {
     }
 
     vector<pair<bool,string> >filters;
-    filters.push_back(make_pair<bool,string>(true, included_filter));
-    filters.push_back(make_pair<bool,string>(false, excluded_filter));
+    filters.push_back(make_pair(true, included_filter));
+    filters.push_back(make_pair(false, excluded_filter));
     
     AnalyzerConfiguration config;
     config.setFilters(filters);

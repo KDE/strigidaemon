@@ -71,11 +71,11 @@ IndexSearchTest::setUp() {
 
     filename = "testfile01";
     filecontents = "this is a simple test file";
-    indexedFiles.insert(make_pair<string, string> (filename, filecontents));
+    indexedFiles.insert(make_pair(filename, filecontents));
 
     filename = "testfile02";
     filecontents = "unit testing example";
-    indexedFiles.insert(make_pair<string, string> (filename, filecontents));
+    indexedFiles.insert(make_pair(filename, filecontents));
 
     // create files on file system
     for (map<string,string>::iterator iter = indexedFiles.begin();

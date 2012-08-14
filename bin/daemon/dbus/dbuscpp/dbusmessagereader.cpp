@@ -209,7 +209,7 @@ DBusMessageReader::operator>>(multimap<int, string>& m) {
                 return *this;
             }
             dbus_message_iter_get_basic(&ssub, &value);
-            m.insert(make_pair<const int,string>(n,value));
+            m.insert(make_pair(n,value));
             if (!dbus_message_iter_has_next(&sub)) {
                 break;
             }
@@ -241,7 +241,7 @@ DBusMessageReader::operator>>(vector<pair<bool, string> >& m) {
                 return *this;
             }
             dbus_message_iter_get_basic(&ssub, &value);
-            m.push_back(make_pair<bool,string>(n,value));
+            m.push_back(make_pair(n,value));
             if (!dbus_message_iter_has_next(&sub)) {
                 break;
             }
