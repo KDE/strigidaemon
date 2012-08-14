@@ -65,7 +65,7 @@ SocketServer::run(void*) {
 
     /* bind server port */
     sock.sun_family = AF_UNIX;
-    if (bind(sd, (struct sockaddr *)&sock, sizeof(sock))<0) {
+    if (::bind(sd, (struct sockaddr *)&sock, sizeof(sock))<0) {
         perror("cannot bind port ");
         return 0;
     }
