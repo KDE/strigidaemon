@@ -146,10 +146,10 @@ PollingListener::rmWatch(const string& path) {
         if ((*iter).find (path,0) == 0) {
             // directory name begins with param dir --> it's a subfolder of dir
             vector<string>::iterator rmIt = iter;
-            iter++;
+            ++iter;
             m_watches.erase (rmIt);
         } else {
-            iter++;
+            ++iter;
         }
     }
 

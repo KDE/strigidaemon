@@ -49,7 +49,7 @@ operator<<(std::ostream& out, const Metadataproperties& e) {
 	out << "<metadataproperties";
 	out << ">\n";
 	std::list<Metadata>::const_iterator metadata_it;
-	for (metadata_it = e.e_metadata.begin(); metadata_it != e.e_metadata.end(); metadata_it++) {
+	for (metadata_it = e.e_metadata.begin(); metadata_it != e.e_metadata.end(); ++metadata_it) {
 		out << *metadata_it;
 	}
 	out << "</metadataproperties>\n";

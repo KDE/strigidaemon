@@ -82,7 +82,7 @@ IndexScheduler::run(void*) {
                 return 0;
 
             vector <Event*> events = m_listenerEventQueue->getEvents();
-            if (events.size() > 0) {
+            if (!events.empty()) {
                 setState(Working);
                 processListenerEvents(events);
                 setState(Idling);
@@ -199,7 +199,7 @@ IndexScheduler::setIndexedDirectories(const std::set<std::string> &d) {
             dirstoindex.insert(dir);
         }
     }
-    if (dirstoindex.size() == 0) {
+    if (dirstoindex.empty()) {
         indexmanager->indexWriter()->deleteAllEntries();
     }
 }

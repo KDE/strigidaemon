@@ -29,7 +29,7 @@ main(int argc, char *argv[]) {
     SocketClient c;
     c.setSocketName("/tmp/katsocket");
     std::vector<std::string> files = c.query(argv[1]);
-    if (files.size() == 0) {
+    if (files.empty()) {
         printf("Error: %s\n", c.getError().c_str());
     } else {
         for (uint i=0; i<files.size(); ++i) {

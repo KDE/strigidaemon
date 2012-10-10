@@ -313,7 +313,7 @@ void FsListener::bootstrap()
         if (!indexedFiles.empty()) {
             // find differences between fs files and indexed ones
             map<string, time_t>::iterator it = indexedFiles.begin();
-            for ( ; it != indexedFiles.end(); it++) {
+            for ( ; it != indexedFiles.end(); ++it) {
                 MatchFile finder (it->first);
                 set<File>::iterator match;
                 match = find_if( (iter->second).begin(),
@@ -400,7 +400,7 @@ void FsListener::reindex()
 
         while (ret != -1) {
             vector<pair<string, struct stat> >::iterator iter;
-            for (iter = dirs.begin(); iter != dirs.end(); iter++) {
+            for (iter = dirs.begin(); iter != dirs.end(); ++iter) {
                 struct stat stats = iter->second;
                 if (S_ISDIR(stats.st_mode)) {//dir
                     set<string> toWatch;

@@ -95,11 +95,11 @@ void* EventListenerQueue::run(void*)
                     {
                         m_toProcess.insert(make_pair(iter->first,iter->second));
                         map<string,Event*>::iterator itRm = iter;
-                        iter++;
+                        ++iter;
                         m_waiting.erase(itRm);
                     }
                     else
-                        iter++;
+                        ++iter;
                 }
             }
             
@@ -167,7 +167,7 @@ void EventListenerQueue::purgeProcessedEvents()
         if (checkElapsedTime(iter->second, now, delta))
         {
             map <string, Event*>::iterator itRm = iter;
-            iter++;
+            ++iter;
             
             // we remove this event forever, free-up some memory
             delete itRm->second;
@@ -176,7 +176,7 @@ void EventListenerQueue::purgeProcessedEvents()
             counter++;
         }
         else
-            iter++;
+            ++iter;
     }
     
     if (counter > 0)

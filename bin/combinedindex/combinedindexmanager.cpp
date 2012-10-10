@@ -273,7 +273,7 @@ CombinedIndexReader::getChildren(const std::string& parent,
     m->p->lock.unlock();
     map<string, TSSPtr<IndexManager> >::const_iterator i;
     for (i = f.begin(); i != f.end(); ++i) {
-        if (children.size()) {
+        if (!children.empty()) {
             return;
         }
         i->second->indexReader()->getChildren(parent, children);
@@ -285,7 +285,7 @@ CombinedIndexReader::fieldNames() {
     m->p->lock.lock();
     map<string, TSSPtr<IndexManager> > f = m->p->readmanagers;
     m->p->lock.unlock();
-    if (f.size() == 0) return n;
+    if (f.empty()) return n;
 
     set<string> names;
     copy(n.begin(), n.end(), inserter(names, names.begin()));

@@ -63,7 +63,7 @@ operator<<(std::ostream& out, const Repository& e) {
 	out << " type='" << e.a_type << "'";
 	out << ">\n";
 	std::list<Path>::const_iterator path_it;
-	for (path_it = e.e_path.begin(); path_it != e.e_path.end(); path_it++) {
+	for (path_it = e.e_path.begin(); path_it != e.e_path.end(); ++path_it) {
 		out << *path_it;
 	}
 	out << " </repository>\n";
@@ -120,7 +120,7 @@ operator<<(std::ostream& out, const Filters& e) {
 	out << " <filters";
 	out << ">\n";
 	std::list<Filter>::const_iterator filter_it;
-	for (filter_it = e.e_filter.begin(); filter_it != e.e_filter.end(); filter_it++) {
+	for (filter_it = e.e_filter.begin(); filter_it != e.e_filter.end(); ++filter_it) {
 		out << *filter_it;
 	}
 	out << " </filters>\n";
@@ -162,7 +162,7 @@ operator<<(std::ostream& out, const StrigiDaemonConfiguration& e) {
 	out << " useDBus='" << e.a_useDBus << "'";
 	out << ">\n";
 	std::list<Repository>::const_iterator repository_it;
-	for (repository_it = e.e_repository.begin(); repository_it != e.e_repository.end(); repository_it++) {
+	for (repository_it = e.e_repository.begin(); repository_it != e.e_repository.end(); ++repository_it) {
 		out << *repository_it;
 	}
 	out << e.e_filters;
