@@ -7,9 +7,13 @@ set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 include(MacroFindOptionalDep)
 enable_testing()
 
-# definition of LIB_DESTINATION which is the path where the lib is installed
+# Used to create config files
+include(CMakePackageConfigHelpers)
+
+# Set the installation paths
 include(GNUInstallDirs)
 set(LIB_DESTINATION "${CMAKE_INSTALL_FULL_LIBDIR}")
+set(INCLUDE_DESTINATION "${CMAKE_INSTALL_FULL_INCLUDEDIR}")
 
 ##### global variables #####
 
@@ -64,7 +68,15 @@ find_optional_dep(Log4cxx ENABLE_LOG4CXX LOG4CXX_FOUND "advanced logging")
 find_package(CppUnit)
 include(ConfigureChecks.cmake)
 set (LIBSEARCHCLIENT_VERSION ${STRIGI_VERSION_STRING})
-configure_file(LibSearchClient.cmake.in ${CMAKE_CURRENT_BINARY_DIR}/LibSearchClientConfig.cmake @ONLY )
+
+configure_package_config_file(LibSearchClient.cmake.in
+                              ${CMAKE_CURRENT_BINARY_DIR}/LibSearchClientConfig.cmake
+                              INSTALL_DESTINATION ${LIB_DESTINATION}/cmake/LibStreams
+                              PATH_VARS INCLUDE_DESTINATION LIB_DESTINATION
+)
+
+
+
 configure_file(config.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/config.h @ONLY )
 IF (ENABLE_LOG4CXX AND LOG4CXX_FOUND)
     add_definitions(-DHAVE_LOG4CXX)
