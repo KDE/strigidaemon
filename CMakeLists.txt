@@ -71,7 +71,7 @@ set (LIBSEARCHCLIENT_VERSION ${STRIGI_VERSION_STRING})
 
 configure_package_config_file(LibSearchClient.cmake.in
                               ${CMAKE_CURRENT_BINARY_DIR}/LibSearchClientConfig.cmake
-                              INSTALL_DESTINATION ${LIB_DESTINATION}/cmake/LibStreams
+                              INSTALL_DESTINATION ${LIB_DESTINATION}/cmake/LibSearchClient
                               PATH_VARS INCLUDE_DESTINATION LIB_DESTINATION
 )
 
