@@ -9,7 +9,7 @@ enable_testing()
 
 # definition of LIB_DESTINATION which is the path where the lib is installed
 include(GNUInstallDirs)
-set(LIB_DESTINATION "${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR}")
+set(LIB_DESTINATION "${CMAKE_INSTALL_FULL_LIBDIR}")
 
 ##### global variables #####
 
