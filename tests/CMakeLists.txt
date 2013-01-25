@@ -3,27 +3,27 @@ include(CheckFunctionExists)
 # Not all systems have mkdtemp, and some of the tests use mkdtemp
 # -- pulling in an implementation from kdefakes is an annoying workaround,
 # so instead just don't do the tests here.
-CHECK_FUNCTION_EXISTS(mkdtemp HAVE_MKDTEMP)
+check_function_exists(mkdtemp HAVE_MKDTEMP)
 
 set (TESTINGDIRS utils indextesters)
 # streamanalyzer
 
 include_directories (. ../bin/daemon ${CPPUNIT_INCLUDE_DIR})
 
-IF(BUILD_DAEMON)
+if(BUILD_DAEMON)
     add_subdirectory(daemon)
-ENDIF(BUILD_DAEMON)
+endif()
 
-IF(NOT HAVE_MKDTEMP)
-    MESSAGE(WARNING " No mkdtemp found; some Strigi tests are suppressed.")
-    SET(TESTINGDIRS utils daemon)
-ENDIF(NOT HAVE_MKDTEMP)
+if(NOT HAVE_MKDTEMP)
+    message(WARNING " No mkdtemp found; some Strigi tests are suppressed.")
+    set(TESTINGDIRS utils daemon)
+endif()
 
-subdirs (${TESTINGDIRS})
+add_subdirectory(${TESTINGDIRS})
 
 # setting for using CPPUNIT
 
-include_directories ( ${strigi_SOURCE_DIR}/src/daemon
+include_directories( ${strigi_SOURCE_DIR}/src/daemon
     ${strigi_BINARY_DIR}/src/streams)
 
 # a convenience library that adds a unified way of build a test executable
@@ -32,5 +32,4 @@ include_directories ( ${strigi_SOURCE_DIR}/src/daemon
 add_library(strigi_test_runner STATIC test_runner.cpp)
 target_link_libraries(strigi_test_runner ${CPPUNIT_LIBRARIES})
 
-ENABLE_TESTING()
-
+enable_testing()

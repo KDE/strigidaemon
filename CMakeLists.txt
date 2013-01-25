@@ -37,7 +37,7 @@ if(CMAKE_SYSTEM MATCHES "Linux")
 endif(CMAKE_SYSTEM MATCHES "Linux")
 
 if(NOT MSVC AND NOT CMAKE_SYSTEM MATCHES "SunOS-5*.")
-	add_definitions(-fPIC)
+    add_definitions(-fPIC)
 endif(NOT MSVC AND NOT CMAKE_SYSTEM MATCHES "SunOS-5*.")
 
 ##### environment inspection #####
@@ -86,19 +86,19 @@ ENDIF (ENABLE_LOG4CXX AND LOG4CXX_FOUND)
 ##### building and testing #####
 
 configure_file(${strigidaemon_SOURCE_DIR}/strigi_thread.h.cmake
-	${strigidaemon_BINARY_DIR}/include/strigi/strigi_thread.h)
+               ${strigidaemon_BINARY_DIR}/include/strigi/strigi_thread.h)
 
 include_directories(${LIBSTREAMS_INCLUDE_DIRS}
-	${LIBSTREAMANALYZER_INCLUDE_DIRS}
-	${strigidaemon_SOURCE_DIR}/include
-	${strigidaemon_SOURCE_DIR}/bin/daemon/xsd
-	${strigidaemon_BINARY_DIR}
-	${strigidaemon_BINARY_DIR}/bin/daemon/dbus
-	${DBUS_INCLUDE_DIRS}
-	${ICONV_INCLUDE_DIR}
-	${LIBXML2_INCLUDE_DIR}
-	bin/combinedindex
-	bin/daemon
+                    ${LIBSTREAMANALYZER_INCLUDE_DIRS}
+                    ${strigidaemon_SOURCE_DIR}/include
+                    ${strigidaemon_SOURCE_DIR}/bin/daemon/xsd
+                    ${strigidaemon_BINARY_DIR}
+                    ${strigidaemon_BINARY_DIR}/bin/daemon/dbus
+                    ${DBUS_INCLUDE_DIRS}
+                    ${ICONV_INCLUDE_DIR}
+                    ${LIBXML2_INCLUDE_DIR}
+                    bin/combinedindex
+                    bin/daemon
 )
 if(LOG4CXX_FOUND)
 	include_directories(${LOG4CXX_INCLUDE_DIR})
@@ -110,7 +110,7 @@ link_directories(${DBUS_LIBRARY_DIRS})
 add_subdirectory(lib)
 add_subdirectory(bin)
 if(CppUnit_FOUND)
-	add_subdirectory(tests)
+    add_subdirectory(tests)
 endif(CppUnit_FOUND)
 
 ##### installing #####
@@ -119,14 +119,13 @@ endif(CppUnit_FOUND)
 # headers
 file(GLOB STRIGI_HEADERS include/strigi/*.h)
 install(FILES
-	${STRIGI_HEADERS}
-	DESTINATION include/strigi
+    ${STRIGI_HEADERS}
+    DESTINATION include/strigi
 )
 install(FILES ${CMAKE_CURRENT_BINARY_DIR}/LibSearchClientConfig.cmake
-	DESTINATION ${LIB_DESTINATION}/libsearchclient)
+        DESTINATION ${LIB_DESTINATION}/libsearchclient)
 file(WRITE ${CMAKE_CURRENT_BINARY_DIR}/dummy.cpp "")
 add_executable(strigidaemon dummy.cpp)
 target_link_libraries(strigidaemon libstrigidaemon)
 install(TARGETS strigidaemon
-	RUNTIME DESTINATION bin)
-# library
+        RUNTIME DESTINATION bin)

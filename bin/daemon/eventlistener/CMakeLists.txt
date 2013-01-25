@@ -1,13 +1,13 @@
-IF(ENABLE_INOTIFY)
+if(ENABLE_INOTIFY)
     set (inotify_SRC inotifylistener.cpp)
-ENDIF(ENABLE_INOTIFY)
+endif()
 
-IF(FAM_FOUND AND ENABLE_FAM)
+if(FAM_FOUND AND ENABLE_FAM)
     set (fam_SRC famlistener.cpp)
     set (eventlistener_LIBS ${eventlistener_LIBS} ${FAM_LIBRARIES})
-ENDIF(FAM_FOUND AND ENABLE_FAM)
+endif()
 
-INCLUDE_DIRECTORIES ( ${CMAKE_CURRENT_SOURCE_DIR}/.. )
+include_directories( ${CMAKE_CURRENT_SOURCE_DIR}/.. )
 
 add_library(eventlistener STATIC
     event.cpp

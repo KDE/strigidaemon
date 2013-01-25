@@ -1,4 +1,4 @@
-subdirs(dbuscpp)
+add_subdirectory(dbuscpp)
 
 # if available, use Perl for generating the dbus interfaces.
 # otherwise, just copy them into the build directory
@@ -7,8 +7,8 @@ find_package(DBus REQUIRED)
 
 link_directories( ${DBUS_LIBRARY_DIRS} )
 
-MACRO(CreateDBusBinding HEADERFILE INAME INTERFACE EXTRAINCLUDE)
-    IF (PERL_FOUND)
+macro(CreateDBusBinding HEADERFILE INAME INTERFACE EXTRAINCLUDE)
+    if(PERL_FOUND)
         add_custom_command(
             OUTPUT  "${CMAKE_CURRENT_BINARY_DIR}/dbus${INAME}.h"
                     "${CMAKE_CURRENT_BINARY_DIR}/dbus${INAME}.cpp"
@@ -32,7 +32,7 @@ MACRO(CreateDBusBinding HEADERFILE INAME INTERFACE EXTRAINCLUDE)
                 "${CMAKE_CURRENT_BINARY_DIR}/dbus${INAME}.cpp"
                 "${CMAKE_CURRENT_SOURCE_DIR}/generated/dbus${INAME}.cpp"
         )
-    ELSE (PERL_FOUND)
+    else()
         add_custom_command(
             OUTPUT  "${CMAKE_CURRENT_BINARY_DIR}/dbus${INAME}.h"
                     "${CMAKE_CURRENT_BINARY_DIR}/dbus${INAME}.cpp"
@@ -45,11 +45,11 @@ MACRO(CreateDBusBinding HEADERFILE INAME INTERFACE EXTRAINCLUDE)
                     "${CMAKE_CURRENT_SOURCE_DIR}/generated/dbus${INAME}.cpp"
                     "${CMAKE_CURRENT_BINARY_DIR}/dbus${INAME}.cpp"
         )
-    ENDIF (PERL_FOUND)
+    endif()
     set_source_files_properties("${CMAKE_CURRENT_BINARY_DIR}/dbus${INAME}.h"
         "${CMAKE_CURRENT_BINARY_DIR}/dbus${INAME}.cpp"
         PROPERTIES GENERATED true)
-ENDMACRO(CreateDBusBinding)
+endmacro()
 
 CreateDBusBinding("${CMAKE_CURRENT_SOURCE_DIR}/../../../include/strigi/clientinterface.h"
         "clientinterface" "vandenoever.strigi"

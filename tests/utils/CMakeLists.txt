@@ -1,8 +1,8 @@
-include_directories (   .
-                        ${strigi_BINARY_DIR}/src/streams
-                        ${strigi_SOURCE_DIR}/src/streamanalyzer
-                        ${strigi_SOURCE_DIR}/src/combinedindexer
-                    )
+include_directories(
+                    ${strigi_BINARY_DIR}/src/streams
+                    ${strigi_SOURCE_DIR}/src/streamanalyzer
+                    ${strigi_SOURCE_DIR}/src/combinedindexer
+                   )
 
 add_library(unittestfunctions STATIC unittestfunctions.cpp)
 
