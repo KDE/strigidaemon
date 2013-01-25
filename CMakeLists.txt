@@ -123,7 +123,7 @@ install(FILES
     DESTINATION include/strigi
 )
 install(FILES ${CMAKE_CURRENT_BINARY_DIR}/LibSearchClientConfig.cmake
-        DESTINATION ${LIB_DESTINATION}/libsearchclient)
+        DESTINATION ${LIB_DESTINATION}/cmake/LibSearchClient)
 file(WRITE ${CMAKE_CURRENT_BINARY_DIR}/dummy.cpp "")
 add_executable(strigidaemon dummy.cpp)
 target_link_libraries(strigidaemon libstrigidaemon)
