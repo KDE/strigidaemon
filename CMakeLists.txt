@@ -7,6 +7,9 @@ set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 include(MacroFindOptionalDep)
 enable_testing()
 
+# definition of LIB_DESTINATION which is the path where the lib is installed
+include(GNUInstallDirs)
+set(LIB_DESTINATION "${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR}")
 
 ##### global variables #####
 
@@ -28,10 +31,6 @@ option(ENABLE_LOG4CXX "enable use of the logging framework Log4CXX" ON)
 if(CMAKE_SYSTEM MATCHES "Linux")
     set(ENABLE_INOTIFY ON)
 endif(CMAKE_SYSTEM MATCHES "Linux")
-
-# definition of LIB_DESTINATION which is the path where the lib is installed
-include(GNUInstallDirs)
-set(LIB_DESTINATION "${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR}")
 
 if(NOT MSVC AND NOT CMAKE_SYSTEM MATCHES "SunOS-5*.")
 	add_definitions(-fPIC)
