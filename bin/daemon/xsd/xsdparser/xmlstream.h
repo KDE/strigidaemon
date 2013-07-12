@@ -35,7 +35,7 @@ private:
     class Private;
     Private* p;
 public:
-    XMLStream(const std::string& xml);
+    explicit XMLStream(const std::string& xml);
     ~XMLStream();
     void setFromAttribute(bool&, const char*);
     void setFromAttribute(int&, const char*);
@@ -82,7 +82,7 @@ public:
     std::list<SimpleNode> nodes;
     std::string text;
 
-    SimpleNode(const std::string& xml);
+    explicit SimpleNode(const std::string& xml);
 };
 
 

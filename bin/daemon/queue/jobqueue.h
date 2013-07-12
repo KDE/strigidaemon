@@ -27,7 +27,7 @@ public:
 private:
    Private* p;
 public:
-   JobQueue(unsigned int n=20);
+   explicit JobQueue(unsigned int n=20);
    ~JobQueue();
    void stop();
    bool addJob(Job* job);

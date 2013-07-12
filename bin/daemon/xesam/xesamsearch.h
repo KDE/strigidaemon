@@ -40,10 +40,10 @@ public:
     XesamSearch(XesamSession& s, const std::string& n,
         const std::string& query);
     XesamSearch(const XesamSearch&);
-    XesamSearch(Private* p);
+    explicit XesamSearch(Private* p);
     ~XesamSearch();
     void operator=(const XesamSearch& xs);
-    bool operator==(const XesamSearch& xs) { return p == xs.p; }
+    bool operator==(const XesamSearch& xs) const { return p == xs.p; }
     void startSearch();
     void getHitCount(void* msg);
     void getHits(void* msg, uint32_t num);

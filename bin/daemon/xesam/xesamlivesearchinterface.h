@@ -29,7 +29,7 @@ private:
     XesamLiveSearchInterface(const XesamLiveSearchInterface&);
     void operator=(const XesamLiveSearchInterface&);
 public:
-    XesamLiveSearchInterface(XesamLiveSearchInterface* x) :iface(x) {}
+    explicit XesamLiveSearchInterface(XesamLiveSearchInterface* x) :iface(x) {}
     virtual ~XesamLiveSearchInterface() {}
     virtual std::string /*session*/ NewSession() {
         return iface->NewSession();

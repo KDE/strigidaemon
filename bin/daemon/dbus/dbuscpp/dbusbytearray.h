@@ -30,7 +30,7 @@ private:
     const char* array;
     int32_t length;
 public:
-    DBusByteArray(DBusMessage* msg);
+    explicit DBusByteArray(DBusMessage* msg);
     ~DBusByteArray() {
         if (msg) {
             dbus_message_unref(msg);

@@ -60,9 +60,9 @@ IndexSearchTest::setUp() {
     }
 
 #ifdef _WIN32
-    separator = "\\";
+    separator = '\\';
 #else
-    separator = "/";
+    separator = '/';
 #endif
 
     // prepare files to be indexed
@@ -79,7 +79,7 @@ IndexSearchTest::setUp() {
 
     // create files on file system
     for (map<string,string>::iterator iter = indexedFiles.begin();
-            iter != indexedFiles.end(); iter++) {
+            iter != indexedFiles.end(); ++iter) {
         ofstream file;
         string fullpath = filedir + separator + iter->first;
         file.open( fullpath.c_str());
@@ -96,7 +96,7 @@ IndexSearchTest::setUp() {
     streamindexer->setIndexWriter(*m_writer);
 
     for (map<string,string>::iterator iter = indexedFiles.begin();
-         iter != indexedFiles.end(); iter++) {
+         iter != indexedFiles.end(); ++iter) {
         string temp = filedir + separator + iter->first;
         fprintf (stderr, "going to index %s\n", temp.c_str());
         streamindexer->indexFile(temp);
@@ -110,7 +110,7 @@ IndexSearchTest::setUp() {
 void
 IndexSearchTest::tearDown() {
     // clean up data (does not work on windows)
-    string cmd = "rm -r '" + filedir + "'";
+    string cmd = "rm -r '" + filedir + '\'';
     int r = system(cmd.c_str());
     CPPUNIT_ASSERT_MESSAGE ("command failed", r == 0);
 

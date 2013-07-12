@@ -126,7 +126,7 @@ IndexScheduler::processListenerEvents(vector<Event*>& events) {
         Event* event = *iter;
 
         STRIGI_LOG_DEBUG ("strigi.IndexScheduler",
-                          "event infos: " + event->toString());
+                          "event information: " + event->toString());
 
         switch (event->getType())
         {

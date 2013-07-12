@@ -27,7 +27,7 @@ class DBusObjectInterface {
 private:
     const std::string interfacename;
 public:
-    DBusObjectInterface(const std::string& i) :interfacename(i) {}
+    explicit DBusObjectInterface(const std::string& i) :interfacename(i) {}
     virtual ~DBusObjectInterface() {};
     virtual DBusHandlerResult handleCall(DBusConnection* connection,
         DBusMessage* msg) = 0;

@@ -67,7 +67,7 @@ void Xesam2StrigiTest::tearDown()
 void Xesam2StrigiTest::parseUlFromString()
 {
   for (set<string>::iterator iter = m_ulQueries.begin();
-       iter != m_ulQueries.end(); iter++)
+       iter != m_ulQueries.end(); ++iter)
   {
     if (!xesam2strigi->parse (*iter, Xesam2Strigi::UserLanguage)) {
       string msg = "Failed to parse xesam userlanguage query: |";
@@ -96,7 +96,7 @@ void Xesam2StrigiTest::parseUlFromFile()
     printf ("created temporary file: %s\n", filename);
 
   for (set<string>::iterator iter = m_ulQueries.begin();
-       iter != m_ulQueries.end(); iter++)
+       iter != m_ulQueries.end(); ++iter)
   {
     out.open(filename);
     out << *iter;

@@ -38,6 +38,6 @@ TestInterface::upload(const std::vector<char>& upload) {
 map<string, string>
 TestInterface::giveMap() {
     map<string, string> m;
-    m["a"] = "b";
+    m["a"] = 'b';
     return m;
 }

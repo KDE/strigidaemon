@@ -25,14 +25,14 @@
 
 XesamListener::XesamListener(OrgFreedesktopXesamSearchInterface* xesam)
         :eventloop(this) {
-    connect(xesam, SIGNAL(HitsAdded(const QString&, uint)),
-        this, SLOT(slotHitsAdded(const QString&, uint)));
-    connect(xesam, SIGNAL(HitsRemoved(const QString &, const QList<uint> &)),
-        this, SLOT(slotHitsRemoved(const QString &, const QList<uint> &)));
-    connect(xesam, SIGNAL(SearchDone(const QString&)),
-        this, SLOT(slotSearchDone(const QString&)));
-    connect(xesam, SIGNAL(StateChanged(const QStringList&)),
-        this, SLOT(slotStateChanged(const QStringList&)));
+    connect(xesam, SIGNAL(HitsAdded(QString, uint)),
+        this, SLOT(slotHitsAdded(QString, uint)));
+    connect(xesam, SIGNAL(HitsRemoved(QString, QList<uint>)),
+        this, SLOT(slotHitsRemoved(QString, QList<uint>)));
+    connect(xesam, SIGNAL(SearchDone(QString)),
+        this, SLOT(slotSearchDone(QString)));
+    connect(xesam, SIGNAL(StateChanged(QStringList)),
+        this, SLOT(slotStateChanged(QStringList)));
 }
 bool
 XesamListener::waitForSearchToFinish(const QString& searchid,

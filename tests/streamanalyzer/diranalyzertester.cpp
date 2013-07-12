@@ -38,9 +38,9 @@ using namespace std;
 using namespace strigiunittest;
 
 #ifdef _WIN32
-    const string DirAnalyzerTester::separator = "\\";
+    const string DirAnalyzerTester::separator = '\\';
 #else
-    const string DirAnalyzerTester::separator = "/";
+    const string DirAnalyzerTester::separator = '/';
 #endif
 
 void DirAnalyzerTester::setUp() {
@@ -87,7 +87,7 @@ void DirAnalyzerTester::setUp() {
 
     // create files on file system
     for (map<string,string>::iterator iter = indexedFiles.begin();
-         iter != indexedFiles.end(); iter++)
+         iter != indexedFiles.end(); ++iter)
     {
         string fullpath = filedir + separator + iter->first;
 
@@ -114,7 +114,7 @@ void DirAnalyzerTester::tearDown()
     // clean up data
     string cmd = "rm -r ";
     cmd += indexdir;
-    cmd += " ";
+    cmd += ' ';
     cmd += filedir;
     int r = system(cmd.c_str());
     CPPUNIT_ASSERT_MESSAGE("cleanup failed", r == 0);
@@ -144,7 +144,7 @@ void DirAnalyzerTester::testCreateIndex()
     Strigi::DirAnalyzer* analyzer = new Strigi::DirAnalyzer(*manager, config);
 
     for (map<string,string>::iterator iter = indexedFiles.begin();
-         iter != indexedFiles.end(); iter++)
+         iter != indexedFiles.end(); ++iter)
     {
         string path = filedir + separator + iter->first;
         // cerr << "going to index " << path << endl;

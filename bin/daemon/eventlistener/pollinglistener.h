@@ -47,7 +47,7 @@ class Event;
 class PollingListener : public EventListener, Strigi::AnalysisCaller {
 public:
     PollingListener();
-    PollingListener(std::set<std::string>& dirs);
+    explicit PollingListener(std::set<std::string>& dirs);
 
     ~PollingListener();
 

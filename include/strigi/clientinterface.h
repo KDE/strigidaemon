@@ -37,7 +37,7 @@ public:
         std::string error;
     };
 
-    ClientInterface(ClientInterface* i) :iface(i) {}
+    explicit ClientInterface(ClientInterface* i) :iface(i) {}
     virtual ~ClientInterface() {}
     virtual int32_t countHits(const std::string& query) {
         return iface->countHits(query);

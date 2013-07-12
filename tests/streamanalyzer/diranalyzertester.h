@@ -17,8 +17,8 @@
  * the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
  * Boston, MA 02110-1301, USA.
  */
-#ifndef UNIT_TEST_DIRANALYZER_TEST_H
-#define UNIT_TEST_DIRANALYZER_TEST_H
+#ifndef UNIT_TEST_DIRANALYZER_TESTER_H
+#define UNIT_TEST_DIRANALYZER_TESTER_H
 
 #include <cppunit/TestFixture.h>
 #include <cppunit/extensions/HelperMacros.h>

@@ -18,8 +18,8 @@
  * Boston, MA 02110-1301, USA.
  */
 
-#ifndef UNIT_TEST_FUNTIONS_H
-#define UNIT_TEST_FUNTIONS_H
+#ifndef UNIT_TEST_FUNCTIONS_H
+#define UNIT_TEST_FUNCTIONS_H
 
 #include <string>
 

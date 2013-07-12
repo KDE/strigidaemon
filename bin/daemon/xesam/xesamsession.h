@@ -33,11 +33,11 @@ private:
 
     XesamSession();
 public:
-    XesamSession(XesamLiveSearch& x);
+    explicit XesamSession(XesamLiveSearch& x);
     XesamSession(const XesamSession& xs);
     ~XesamSession();
     void operator=(const XesamSession& xs);
-    bool operator==(const XesamSession& xs) { return p == xs.p; }
+    bool operator==(const XesamSession& xs) const { return p == xs.p; }
     /**
      * Attempt to set a parameter to the given value.
      * A runtime_error will be thrown if this function was called after a

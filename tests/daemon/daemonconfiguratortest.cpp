@@ -68,7 +68,7 @@ CPPUNIT_TEST_SUITE_REGISTRATION( DaemonConfiguratorTest );
 bool DaemonConfiguratorTest::checkEq(set<string>& ori, set<string>& last, 
                                      string& errMsg)
 {
-    for (set<string>::iterator itOri = ori.begin(); itOri != ori.end(); itOri++)
+    for (set<string>::iterator itOri = ori.begin(); itOri != ori.end(); ++itOri)
     {
         set<string>::iterator itLast = last.find(*itOri);
         if (itLast == last.end())
@@ -105,7 +105,7 @@ bool DaemonConfiguratorTest::checkEq(Strigi::AnalyzerConfiguration& oriConf,
     
     // check retrieved values
     for (vector<pair<bool,string> >::iterator itOri = filtersOri.begin();
-         itOri != filtersOri.end(); itOri++)
+         itOri != filtersOri.end(); ++itOri)
     {
         FindFilterRule findRule (itOri->first, itOri->second);
         
@@ -213,8 +213,7 @@ void DaemonConfiguratorTest::testIndexedDirs()
     
     dirsLast = dirsSet;
     for (set<string>::iterator it = dirsDelta.begin(); it != dirsDelta.end();
-         it++)
-    {
+            ++it) {
         dirsLast.insert(*it);
     }
     
@@ -244,7 +243,7 @@ void DaemonConfiguratorTest::testFilters()
     // check retrieved values
     bool check = true;
     for (vector<pair<bool,string> >::iterator itSet = filtersSet.begin();
-         itSet != filtersSet.end(); itSet++)
+         itSet != filtersSet.end(); ++itSet)
     {
         FindFilterRule findRule (itSet->first, itSet->second);
         
